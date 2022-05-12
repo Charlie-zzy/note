@@ -1,7 +1,7 @@
 # note
 A simple app using MongoDB, which provides public pastbin.
 
-# use
+# Usage
 
 1. Clone project code.
 
