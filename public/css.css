@@ -1,0 +1,165 @@
+/*   字体   */
+@font-face {
+  font-family: 'Fira Sans';
+  font-style: normal;
+  font-weight: normal;
+  src: url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot);
+  src: local('Fira Sans'), local('FiraSans-Normal'),
+    url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.eot?#iefix)
+      format('embedded-opentype'),
+    url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff2)
+      format('woff2'),
+    url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.woff) format('woff'),
+    url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.ttf)
+      format('truetype'),
+    url(//lib.baomitu.com/fonts/fira-sans/fira-sans-regular.svg#FiraSans)
+      format('svg');
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+  height: 100vh;
+
+  font-family: 'Fira Code Retina', 'Fira Sans', 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+}
+
+#note {
+  border-radius: 4px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.03), 0 10px 20px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(8px);
+
+  padding: 0.7em 0.8em;
+  margin: 24px;
+  margin-bottom: 36px;
+  box-sizing: border-box;
+
+  min-height: 10vh;
+  height: calc(100vh - 48px);
+  max-height: calc(100vh - 48px);
+
+  min-width: 50vw;
+  width: calc(100vw - 24px);
+  max-width: calc(100vw - 24px);
+
+  font-size: 1.2em;
+
+  outline: none;
+  border: none;
+}
+
+.info {
+  position: absolute;
+  bottom: 4px;
+
+  user-select: none;
+  white-space: nowrap;
+
+  font-size: xx-small;
+}
+
+.info,
+.info > a {
+  color: #727272;
+}
+
+button {
+  border-radius: 114514px;
+  height: 24px;
+  width: 24px;
+
+  background: 0 0;
+  border: none;
+  outline: none;
+}
+button:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+button:active {
+  background-color: rgba(0, 0, 0, 0.165);
+}
+
+#save {
+  position: absolute;
+  bottom: 4px;
+  right: 32px;
+
+  pointer-events: none;
+  white-space: nowrap;
+
+  transform: scale(3);
+  color: #727272;
+  will-change: color;
+  transition: color ease 0.2s;
+}
+#save.saving {
+  color: #febf4a;
+}
+#save.saved {
+  color: #0dbc79;
+}
+
+/* 颜色切换动画 */
+body,
+#note,
+.info,
+button {
+  will-change: background-color;
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 颜色设置 */
+:root {
+  --dark-background-color: #282f38;
+  --dark-color: #1e1e1e;
+  --dark-text-color: #fcfcfc;
+
+  --light-background-color: #eceff2;
+  --light-color: #ffffff;
+  --light-text-color: #000000;
+}
+
+/* 暗色模式支持 */
+@media screen and (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--dark-background-color);
+  }
+  #note {
+    background-color: var(--dark-color);
+    color: var(--dark-text-color);
+  }
+}
+body.dark {
+  background-color: var(--dark-background-color);
+}
+body.dark > #note {
+  background-color: var(--dark-color);
+  color: var(--dark-text-color);
+}
+
+@media screen and (prefers-color-scheme: light) {
+  body {
+    background-color: var(--light-background-color);
+  }
+  #note {
+    background-color: var(--light-color);
+    color: var(--light-text-color);
+  }
+}
+body.light {
+  background-color: var(--light-background-color);
+}
+body.light > #note {
+  background-color: var(--light-color);
+  color: var(--light-text-color);
+}
