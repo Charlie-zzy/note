@@ -10,15 +10,15 @@ class Database {
       console.log('Database successfully connected!')
 
       this.db.stats((err, res) => {
-        if(err) throw err
-        if (this.debug) console.log('Data count:', res.count)
+        if (err) throw err
         this.db.find().toArray((err, res) => {
           if (err) throw err
-          console.table(
-            res.map(({ key, data }) => {
+          console.log(
+            res.slice(-5).map(({ key, data }) => {
               return { key, length: data?.length }
             })
           )
+          console.log('Total:', res.length)
         })
       })
     })

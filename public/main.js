@@ -1,4 +1,5 @@
-const key = location.pathname.split('/').at(-2)
+const keyarray = location.pathname.split('/')
+const key = keyarray[keyarray.length - 2]
 const save = document.getElementById('save')
 let data = null,
   handler = null
@@ -47,13 +48,15 @@ function update() {
     method: 'PUT',
     body: JSON.stringify({ key, data }),
     headers: { 'Content-Type': 'application/json' },
-  }).then(() => {
-    save.className = 'saved'
-    clearTimeout(handler)
-    handler = setTimeout(() => {
-      if (save.className == 'saved') save.className = ''
-    }, 1500)
   })
+    .then(() => {
+      save.className = 'saved'
+      clearTimeout(handler)
+      handler = setTimeout(() => {
+        if (save.className == 'saved') save.className = ''
+      }, 1500)
+    })
+    .catch(() => (save.className = 'fail'))
 }
 
 fetch(`/api/note/get?key=${key}`)

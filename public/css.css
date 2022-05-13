@@ -27,10 +27,7 @@ body {
   align-items: center;
 
   overflow: hidden;
-  height: 100vh;
-
-  font-family: 'Fira Code Retina', 'Fira Sans', 'Helvetica Neue', Helvetica,
-    Arial, sans-serif;
+  min-height: 100vh;
 }
 
 #note {
@@ -39,15 +36,14 @@ body {
   backdrop-filter: blur(8px);
 
   padding: 0.7em 0.8em;
-  margin: 24px;
-  margin-bottom: 36px;
+  margin-bottom: 12px;
   box-sizing: border-box;
 
-  min-height: 10vh;
-  height: calc(100vh - 48px);
-  max-height: calc(100vh - 48px);
+  min-height: 5.2em;
+  height: calc(100vh - 36px);
+  max-height: calc(100vh - 36px);
 
-  min-width: 50vw;
+  min-width: max(50vw, 16em);
   width: calc(100vw - 24px);
   max-width: calc(100vw - 24px);
 
@@ -59,12 +55,12 @@ body {
 
 .info {
   position: absolute;
-  bottom: 4px;
+  bottom: 3px;
 
   user-select: none;
   white-space: nowrap;
 
-  font-size: xx-small;
+  font-size: 14px;
 }
 
 .info,
@@ -72,7 +68,40 @@ body {
   color: #727272;
 }
 
+.info,
+#note {
+  font-family: 'Fira Code Retina', 'Fira Sans', 'Helvetica Neue', Helvetica,
+    Arial, sans-serif;
+}
+
 button {
+  position: absolute;
+  bottom: 0;
+  left: 24px;
+  transform: scale(0.8);
+
+  border-radius: 114514px;
+  height: 24px;
+  width: 24px;
+
+  background: 0 0;
+  border: none;
+  outline: none;
+}
+button:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+button:active {
+  background-color: rgba(0, 0, 0, 0.165);
+}
+
+button {
+  position: absolute;
+  bottom: 1px;
+  left: 12px;
+  transform: scale(0.8);
+
   border-radius: 114514px;
   height: 24px;
   width: 24px;
@@ -92,12 +121,12 @@ button:active {
 #save {
   position: absolute;
   bottom: 4px;
-  right: 32px;
+  right: 20px;
 
   pointer-events: none;
   white-space: nowrap;
 
-  transform: scale(3);
+  transform: scale(2.5);
   color: #727272;
   will-change: color;
   transition: color ease 0.2s;
@@ -107,6 +136,9 @@ button:active {
 }
 #save.saved {
   color: #0dbc79;
+}
+#save.fail {
+  color: #ea3321;
 }
 
 /* 颜色切换动画 */
