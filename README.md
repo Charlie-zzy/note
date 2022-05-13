@@ -19,5 +19,5 @@ npm i
 3. Start local server.
 
 ```bash
-node main.js
+npm serve
 ```
